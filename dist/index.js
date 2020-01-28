@@ -53,7 +53,7 @@ module.exports = class ChunksWebpackPlugin {
     compilation.chunkGroups.forEach(chunkGroup => {
       // Check if chunkGroup contains chunks
       if (chunkGroup.chunks.length) {
-        const entryName = chunkGroup.options.name; // ignore dynamic import chunk
+        const entryName = chunkGroup.options && chunkGroup.options.name || chunkGroup.name; // ignore dynamic import chunk
 
         if (entryName === null || typeof entryName === 'undefined') {
           return;
